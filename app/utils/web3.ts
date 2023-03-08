@@ -41,21 +41,3 @@ export async function onboardUser(address) {
     return false;
   }
 }
-
-export async function handleDisconnect(
-  setIsLoading,
-  setAddress,
-  handleNavigate
-) {
-  setIsLoading(true);
-  try {
-    setTimeout(() => {
-      setAddress("");
-      window.localStorage.removeItem("TRON_ADDRESS");
-      handleNavigate();
-      setIsLoading(false);
-    }, 500);
-  } catch (error) {
-    console.error(error);
-  }
-}

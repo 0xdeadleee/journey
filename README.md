@@ -1,6 +1,6 @@
 # Journey
 
-Journey is a Fantom-native quests platform built to onboard the next billion users into crypto through the Fantom blockchain. This project was built specifically for the Fantom Grand Hackathon: Season 3, hosted by the Fantom Foundation.
+Journey is a Fantom-native quests platform built to onboard the next billion users into crypto through the Fantom blockchain. This project was built specifically for the Fantom Q1 Hackathon.
 
 - Check out the [Live Deployment](https://tryjourney.xyz)
 - Check out the [Walkthrough Demo](https://vimeo.com/805770352)
