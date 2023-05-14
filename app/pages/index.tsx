@@ -3,6 +3,7 @@ import styles from "@styles/Home.module.css";
 import { useCallback, useEffect, useState } from "react";
 import { VStack, Text } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
+import Explore from "@components/Explore";
 
 function Home() {
   const [width, setWidth] = useState<number>(window.innerWidth);
@@ -34,7 +35,7 @@ function Home() {
     );
   }
 
-  return <Landing />;
+  return !isConnected ? <Landing /> : <Explore />;
 }
 
 export default Home;
