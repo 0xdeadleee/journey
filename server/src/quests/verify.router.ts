@@ -66,7 +66,7 @@ verifyRouter.get("/:questId/:address", async (req: Request, res: Response) => {
             }
           } else {
             const response = await fetch(
-              `https://api.gnosisscan.io/api?module=account&action=txlist&address=${address}&startblock=1&endblock=99999999&sort=asc&apikey=${API_KEY}`
+              `https://api.gnosisscan.io/api?module=account&action=txlist&address=${address}&startblock=1&endblock=99999999&sort=desc&apikey=${API_KEY}`
             );
 
             const data = await response.json();
