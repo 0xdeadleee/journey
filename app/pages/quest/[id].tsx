@@ -23,7 +23,6 @@ import {
   toastVerifySuccess,
 } from "@utils/toast";
 import { useAccount } from "wagmi";
-import { mockQuests } from "@data/static";
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === "prod"
@@ -38,7 +37,7 @@ function Quest() {
   const { id: questId } = router.query;
 
   const [fetchedUser, setFetchedUser] = useState<any>();
-  // const [fetchedQuest, setFetchedQuest] = useState<any>();
+  const [fetchedQuest, setFetchedQuest] = useState<any>();
 
   const [isQuestLoading, setQuestLoading] = useState<boolean>(false);
   const [isStartLoading, setStartLoading] = useState<boolean>(false);
@@ -53,17 +52,210 @@ function Quest() {
     [router]
   );
 
-  const isQuestActive = false;
-  const isQuestCompleted = false;
-  const isQuestRewarded = false;
+  const fetchUser = useCallback(async () => {
+    if (!address) return;
+    try {
+      const response = await fetch(`${JOURNEY_API_URL}/api/users/${address}`);
+      if (response.status === 200) {
+        const user = await response.json();
+        setFetchedUser(user);
+        return user;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [address]);
 
-  const verifyQuest = () => {};
-  const claimReward = () => {};
-  const startQuest = () => {};
-  const currentStep = 0;
+  const fetchQuest = useCallback(async () => {
+    if (!questId) return;
+    setQuestLoading(true);
+    try {
+      const response = await fetch(`${JOURNEY_API_URL}/api/quests/${questId}`);
+      if (response.status === 200) {
+        const quest = await response.json();
+        setFetchedQuest(quest);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setQuestLoading(false);
+  }, [questId]);
 
-  const fetchedQuest = mockQuests.find((q) => q.id === questId);
-  const questSteps = Object.values(mockQuests[0].steps);
+  // // increment current setp and update user quest status
+  const updateQuestStatus = useCallback(
+    async (isRewarded?: boolean) => {
+      if (!fetchedUser) return;
+
+      const fetchedStep = fetchedUser.quests[questId as string].currentStep;
+      const newQuests = JSON.parse(JSON.stringify(fetchedUser.quests));
+
+      const isCompleted =
+        fetchedStep === Object.keys(fetchedQuest.steps).length - 1;
+
+      if (isRewarded) {
+        newQuests[questId as string].status = "rewarded";
+      } else {
+        newQuests[questId as string].currentStep = fetchedStep + 1;
+
+        if (isCompleted) {
+          newQuests[questId as string].status = "completed";
+        }
+      }
+
+      const requestOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          address: address,
+          quests: newQuests,
+        }),
+      };
+
+      const response = await fetch(
+        `${JOURNEY_API_URL}/api/users/${address}`,
+        requestOptions
+      );
+
+      if (response.status === 200) {
+        await fetchUser();
+      }
+    },
+    [address, fetchUser, fetchedQuest, fetchedUser, questId]
+  );
+
+  // check quest has completed and update quest status
+  const verifyQuest = useCallback(async () => {
+    setVerifyLoading(true);
+    try {
+      const response = await fetch(
+        `${JOURNEY_API_URL}/api/verify/${questId}/${address}`
+      );
+      if (response.status === 200) {
+        toastVerifySuccess(toast);
+        await updateQuestStatus();
+      } else {
+        toastVerifyFailure(toast);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setVerifyLoading(false);
+  }, [address, questId, toast, updateQuestStatus]);
+
+  // update user quest status
+  const startQuest = useCallback(async () => {
+    setStartLoading(true);
+    if (!address || !questId) return;
+    try {
+      const newQuests = JSON.parse(JSON.stringify(fetchedUser.quests));
+
+      // add new quest status into user's quests map
+      newQuests[questId as string] = {
+        questId: questId,
+        startedAt: new Date().getTime(),
+        currentStep: 0,
+        status: "in_progress",
+      };
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          address: address,
+          newQuests: newQuests,
+        }),
+      };
+
+      const response = await fetch(
+        `${JOURNEY_API_URL}/api/users/startQuest`,
+        requestOptions
+      );
+
+      if (response.status === 200) {
+        await fetchUser();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setStartLoading(false);
+  }, [address, fetchUser, fetchedUser, questId]);
+
+  // claim quest reward
+  const claimReward = useCallback(async () => {
+    setClaimLoading(true);
+    try {
+      const response = await fetch(
+        `${JOURNEY_API_URL}/api/claim/${questId}/${address}`
+      );
+      if (response.status === 200) {
+        toastClaimSuccess(toast);
+        await updateQuestStatus(true);
+        await fetchQuest();
+      } else {
+        toastClaimFailure(toast);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setClaimLoading(false);
+  }, [address, fetchQuest, questId, toast, updateQuestStatus]);
+
+  const isQuestCompleted = useMemo(
+    () =>
+      fetchedUser &&
+      fetchedUser.quests &&
+      fetchedUser.quests[questId as string] &&
+      fetchedUser.quests[questId as string].status === "completed",
+    [fetchedUser, questId]
+  );
+
+  const isQuestRewarded = useMemo(
+    () =>
+      fetchedUser &&
+      fetchedUser.quests &&
+      fetchedUser.quests[questId as string] &&
+      fetchedUser.quests[questId as string].status === "rewarded",
+    [fetchedUser, questId]
+  );
+
+  const isQuestActive = useMemo(
+    () => (fetchedUser ? !!fetchedUser.quests[questId as string] : false),
+    [fetchedUser, questId]
+  );
+
+  const currentStep = useMemo(
+    () =>
+      fetchedUser && fetchedUser.quests[questId as string]
+        ? Number(fetchedUser.quests[questId as string].currentStep)
+        : 0,
+    [fetchedUser, questId]
+  );
+
+  const questSteps = useMemo(
+    () => (fetchedQuest ? Object.values(fetchedQuest.steps) : []),
+    [fetchedQuest]
+  );
+
+  // set fetched quest on initial render
+  useEffect(() => {
+    if (!fetchedQuest) {
+      fetchQuest();
+    }
+    if (!fetchedUser) {
+      fetchUser();
+    }
+  }, [fetchQuest, fetchUser, fetchedQuest, fetchedUser, questId]);
+
+  if (isQuestLoading)
+    return (
+      <VStack className={styles.loadingContainer}>
+        <Spinner color="white" size="xl" />
+      </VStack>
+    );
+
+  if (!fetchedUser || !fetchedQuest) return <Error404 />;
+
+  if (!questId) return null;
 
   return (
     <VStack className={styles.container}>

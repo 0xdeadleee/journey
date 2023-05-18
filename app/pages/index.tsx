@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { VStack, Text } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
 import Explore from "@components/Explore";
+import { onboardUser } from "@utils/web3";
 
 function Home() {
   const [width, setWidth] = useState<number>(window.innerWidth);
@@ -19,6 +20,16 @@ function Home() {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
   }, []);
+
+  const saveUser = useCallback(async () => {
+    await onboardUser(address);
+  }, [address]);
+
+  useEffect(() => {
+    if (address) {
+      saveUser();
+    }
+  }, [address, saveUser]);
 
   const isMobile = width <= 768;
 
