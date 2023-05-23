@@ -26,8 +26,6 @@ import Error404 from "@components/404";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAccount } from "wagmi";
-import withTransition from "@components/withTransition";
-import { mockQuests } from "@data/static";
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === "prod"
@@ -241,7 +239,7 @@ function Profile() {
           </HStack>
         </HStack>
       </VStack>
-      {mockQuests.length === 0 ? (
+      {completedQuests.length === 0 ? (
         <VStack pt="4rem">
           <Text className={styles.nullTitle}>Welcome to Journey!</Text>
           <Text className={styles.nullSubtitle}>
@@ -255,7 +253,7 @@ function Profile() {
             <Text className={styles.badgeSectionTitle}>Badges</Text>
           </VStack>
           <SimpleGrid columns={4} gap={5}>
-            {mockQuests.slice(0, 4).map(({ id, nft_reward, title }) => (
+            {completedQuests.slice(0, 4).map(({ id, nft_reward, title }) => (
               <Link href={`/quest/${id}`} key={id}>
                 <VStack className={styles.badgeContainer}>
                   <Image
@@ -291,4 +289,4 @@ function Profile() {
   );
 }
 
-export default withTransition(Profile);
+export default Profile;
