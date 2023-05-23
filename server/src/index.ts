@@ -5,6 +5,7 @@ import helmet from "helmet";
 import { questsRouter } from "./quests/quests.router";
 import { verifyRouter } from "./quests/verify.router";
 import { usersRouter } from "./quests/users.router";
+import { claimRouter } from "./quests/claim.router";
 import { twitterRouter } from "./quests/twitter.router";
 import { journeyRouter } from "./quests/journey.router";
 
@@ -24,6 +25,7 @@ app.use("/api/quests", questsRouter);
 app.use("/api/journey", journeyRouter);
 app.use("/api/verify", verifyRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/claim", claimRouter);
 app.use("/api/twitter", twitterRouter);
 
 app.listen(port, () => {
