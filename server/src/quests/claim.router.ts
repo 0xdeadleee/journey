@@ -68,7 +68,7 @@ claimRouter.get("/:questId/:address", async (req: Request, res: Response) => {
         // SEND NFT REWARD
         const nftResult = await RewarderContract.reward(
           JOURNEY_NFT_ADDRESS,
-          ethAddress(address),
+          address,
           nft_reward.token_uri
         );
 

@@ -25,10 +25,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_honeyswap.jpg",
       title: "DEX 101 with HoneySwap",
       token_uri:
-        "https://bafybeiaumphawqgi2igq2zyvfdiucd67slj6sizk2gwo5kgammu553y2hq.ipfs.w3s.link/1.json",
+        "https://bafybeigva44cr3hx5nvqvlmhwq2rblpfbeenczsyysp7l5og6fpslfzkey.ipfs.w3s.link/1.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
@@ -69,6 +69,7 @@ export const mockQuests: Quest[] = [
           "Show your love and support by following HoneySwap on Twitter!",
         start_url: "https://twitter.com/Honeyswap",
         title: "Follow HoneySwap on Twitter",
+        partner_id: "1310159840652779520",
         isTwitter: true,
       },
     },
@@ -84,10 +85,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_agave.jpg",
       title: "Staking with IceCream",
       token_uri:
-        "https://bafybeigy6nxk6ztaicct5skk44elecy7m6bq2i63d6puh6kfjlt6akqqm4.ipfs.w3s.link/2.json",
+        "https://bafybeifb5boxu2loicbldk256mt5exhl6oyrd6vwi5xhxvqevzd6xmqor4.ipfs.w3s.link/2.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
@@ -135,10 +136,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_stakewise.jpg",
       title: "Liquid Staking with Stakewise",
       token_uri:
-        "https://bafybeihcqqxt64xfu3j3ey5hgotjmhew73qxzg4vfrxzt3fhdlv5fl2eaa.ipfs.w3s.link/3.json",
+        "https://bafybeibnth5wdqa2jn26vuljn5eouu3dsp6ineurs3cjkyslgpgsjok67a.ipfs.w3s.link/3.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
@@ -179,10 +180,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_uniqueone.jpg",
       title: "NFT 101 on Unique One",
       token_uri:
-        "https://bafybeihjg753qptdbu42pbza5h2n4ehmlumtiykgkcuhalt7m444kqkbpe.ipfs.w3s.link/4.json",
+        "https://bafybeih275ktr6jznpnjqy7ckpkdb4antqqcmiubryszoqmj2wfo5nuzoi.ipfs.w3s.link/4.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
@@ -231,10 +232,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_poap.jpg",
       title: "Multi-Sig on Oryy",
       token_uri:
-        "https://bafybeia7vldvzoka2rybrfvs4tykwaz3krk53nq3udlzqmcbmb7xtwecpi.ipfs.w3s.link/5.json",
+        "https://bafybeiffqsxrmyrxfj66522qeehlp2bkc33fzvmd6lqjw4uo4spbclkqyy.ipfs.w3s.link/5.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
@@ -275,10 +276,10 @@ export const mockQuests: Quest[] = [
       preview_url: "/sd_safe.jpg",
       title: "Multi-Sig on Safe",
       token_uri:
-        "https://bafybeidn7kz3xdby5dvs5km2lusbx7edr5knjus2dfkxujxoqtcnemlp7a.ipfs.w3s.link/6.json",
+        "https://bafybeihrpczas5wdtpnccsty56fui44gpctcy5qg5akhtlglksxivrn5d4.ipfs.w3s.link/6.json",
     },
     token_reward: {
-      amount: "10",
+      amount: "0.01",
       fiat_amount: "10",
       symbol: "xDAI",
     },
