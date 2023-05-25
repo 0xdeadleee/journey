@@ -4,7 +4,7 @@ import { mockQuests } from "./static";
 
 function migration() {
   mockQuests.forEach(async (quest) => {
-    const docRef = doc(db, "quests", quest.order.toString());
+    const docRef = doc(db, "quests", quest.id.toString());
     await updateDoc(docRef, quest);
   });
 }

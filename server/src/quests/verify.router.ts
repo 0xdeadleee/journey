@@ -65,9 +65,15 @@ verifyRouter.get("/:questId/:address", async (req: Request, res: Response) => {
               res.status(404).send({ message: "Error: Verification failed" });
             }
           } else {
-            const response = await fetch(
+            let response = await fetch(
               `https://api.gnosisscan.io/api?module=account&action=txlist&address=${address}&startblock=1&endblock=99999999&sort=desc&apikey=${API_KEY}`
             );
+
+            if (questId === "5") {
+              response = await fetch(
+                `https://api.gnosisscan.io/api?module=account&action=tokennfttx&address=${address}&startblock=0&endblock=999999999&sort=desc&apikey=${API_KEY}`
+              );
+            }
 
             const data = await response.json();
             const transactions = data.result;

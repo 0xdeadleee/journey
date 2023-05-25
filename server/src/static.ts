@@ -38,7 +38,7 @@ export const mockQuests: Quest[] = [
       image_url: "/honeyswap.jpg",
     },
     order: 1,
-    completed_users: [],
+    completed_users: ["1", "2", "3"],
     steps: {
       0: {
         amount: 100,
@@ -98,29 +98,31 @@ export const mockQuests: Quest[] = [
       image_url: "/agave.jpg",
     },
     order: 2,
-    completed_users: [],
+    completed_users: ["1", "2"],
     steps: {
       0: {
         amount: 100,
-        description: "Swap at least 1 xDAI to ICE on IceCream Swap.",
-        start_url: "https://icecreamswap.com/swap?chainId=50",
-        title: "Swap your xDAI to ICE on IceCream Swap",
+        description:
+          "Deposit at least 1 xDAI into Agave Finance to use as collateral for borrowing.",
+        start_url: "https://app.agave.finance/#/deposit/XDAI",
+        title: "Deposit at least 1 xDAI to earn yield",
         isTwitter: false,
       },
       1: {
         amount: 100,
         description:
-          "Stake your ICE on IceCream Swap and receive staking rewards.",
-        start_url: "https://icecreamswap.com/pools?chainId=50",
-        title: "Stake your ICE on IceCream Swap",
+          "Borrow USDC against your deposited xDAI as collateral from Step 1.",
+        start_url: "https://app.agave.finance/#/borrow/USDC",
+        title: "Borrow USDC against your xDAI collateral",
         isTwitter: false,
       },
       2: {
         amount: 100,
         description:
-          "Show your love and support by following IceCream Swap on Twitter!",
-        start_url: "https://twitter.com/icecream_swap",
-        title: "Follow IceCream Swap on Twitter",
+          "Show your love and support by following Agave Finance on Twitter!",
+        start_url: "https://twitter.com/Agave_lending",
+        partner_id: "1364989021340983300",
+        title: "Follow Agave Finance on Twitter",
         isTwitter: true,
       },
     },
@@ -149,22 +151,23 @@ export const mockQuests: Quest[] = [
       image_url: "/stakewise.png",
     },
     order: 3,
-    completed_users: [],
+    completed_users: ["1", "2"],
     steps: {
       0: {
         amount: 100,
         description:
-          "Bridge at least 1 xDAI into xDAI Network from any chain on IceCream.",
-        start_url: "https://icecreamswap.com/bridge?chainId=56",
-        title: "Bridge at least 1 xDAI into xDAI Network",
+          "Stake any amount of GNO on Stakewise and receive staking rewards with sGNO.",
+        start_url: "https://app.stakewise.io/",
+        title: "Stake your GNO on Stakewise",
         isTwitter: false,
       },
       1: {
         amount: 100,
         description:
-          "Show your love and support by following IceCream Swap on Twitter!",
-        start_url: "https://twitter.com/icecream_swap",
-        title: "Follow IceCream Swap on Twitter",
+          "Show your love and support by following Stakewise on Twitter!",
+        start_url: "https://twitter.com/stakewise_io",
+        title: "Follow Stakewise on Twitter",
+        partner_id: "1163782803298951170",
         isTwitter: true,
       },
     },
@@ -193,30 +196,23 @@ export const mockQuests: Quest[] = [
       image_url: "/unique.jpg",
     },
     order: 4,
-    completed_users: [],
+    completed_users: ["1"],
     steps: {
       0: {
         amount: 100,
         description:
-          "XD Sea is an open NFT marketplace on xDAI Network. Buy any NFT on XD Sea!",
-        start_url: "https://www.xdsea.com/",
-        title: "Buy an NFT on XD Sea",
+          "Unique One is an open NFT marketplace on Gnosis Chain. Buy any NFT on Unique One!",
+        start_url: "https://xdai.unique.one/",
+        title: "Buy an NFT on Unique One",
         isTwitter: false,
       },
       1: {
         amount: 100,
         description:
-          "Learn how to create your own unique NFT using the XD Sea NFT creator platform.",
-        start_url: "https://www.xdsea.com/create-nft",
-        title: "Mint your own NFT on XD Sea",
-        isTwitter: false,
-      },
-      2: {
-        amount: 100,
-        description:
-          "Show your love and support by following XD Sea on Twitter!",
-        start_url: "https://twitter.com/XDSeaNFT",
-        title: "Follow XD Sea on Twitter",
+          "Show your love and support by following Unique One on Twitter!",
+        start_url: "https://twitter.com/UniqueOne_UO",
+        partner_id: "1316749243655155712",
+        title: "Follow Unique One on Twitter",
         isTwitter: true,
       },
     },
@@ -245,22 +241,22 @@ export const mockQuests: Quest[] = [
       image_url: "/poap.jpg",
     },
     order: 6,
-    completed_users: [],
+    completed_users: ["1"],
     steps: {
       0: {
         amount: 100,
         description:
-          "Create a new safe on Oryy to securely control your assets with multiple owners.",
-        start_url: "https://app.oryy.io/welcome?chain=xdc",
-        title: "Create a new safe on Oryy",
+          "Claim a Proof of Attendance Token on Gnosis Chain by attending any event!",
+        start_url: "https://poap.xyz/",
+        title: "Claim a POAP on Gnosis Chain",
         isTwitter: false,
       },
       1: {
         amount: 100,
-        description:
-          "Show your love and support by following Fathom Finance on Twitter!",
-        start_url: "https://twitter.com/fathom_fi",
-        title: "Follow Fathom Finance on Twitter",
+        description: "Show your love and support by following POAP on Twitter!",
+        start_url: "https://twitter.com/poapxyz",
+        partner_id: "1096560334880399361",
+        title: "Follow POAP on Twitter",
         isTwitter: true,
       },
     },
@@ -289,37 +285,22 @@ export const mockQuests: Quest[] = [
       image_url: "/safe.jpg",
     },
     order: 5,
-    completed_users: [],
+    completed_users: ["1", "2", "3"],
     steps: {
       0: {
         amount: 100,
-        description: "Swap at least 1 xDAI to ICE on IceCream Swap.",
-        start_url: "https://icecreamswap.com/swap?chainId=50",
-        title: "Swap your xDAI to ICE on IceCream Swap",
+        description:
+          "Create a new safe on Safe to securely control your assets with multiple owners.",
+        start_url: "https://app.safe.global/welcome",
+        title: "Create a new safe on Safe",
         isTwitter: false,
       },
       1: {
         amount: 100,
-        description:
-          "Supply any xDAI and ICE to the ICE-xDAI pool on IceCream Swap to earn fees when users swap in this pool.",
-        start_url: "https://icecreamswap.com/liquidity?chainId=50",
-        title: "Provide liquidity to the ICE-xDAI pool on IceCream Swap",
-        isTwitter: false,
-      },
-      2: {
-        amount: 100,
-        description:
-          "Boost your earnings from Step 2 by staking your ICE-xDAI LP tokens in the ICE-xDAI farm.",
-        start_url: "https://icecreamswap.com/farms?chainId=50",
-        title: "Stake your LP tokens in the ICE-xDAI Farm",
-        isTwitter: false,
-      },
-      3: {
-        amount: 100,
-        description:
-          "Show your love and support by following IceCream Swap on Twitter!",
-        start_url: "https://twitter.com/icecream_swap",
-        title: "Follow IceCream Swap on Twitter",
+        description: "Show your love and support by following Safe on Twitter!",
+        start_url: "https://twitter.com/safe",
+        partner_id: "8467082",
+        title: "Follow Safe on Twitter",
         isTwitter: true,
       },
     },

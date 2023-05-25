@@ -12,7 +12,7 @@ contract JourneyRewarder is Ownable {
         string memory tokenURI
     ) public payable onlyOwner {
         (bool sent, bytes memory data) = recipient.call{value: msg.value}("");
-        require(sent, "Failed to send XDC");
+        require(sent, "Failed to send xDAI");
 
         JourneyNFT(payable(nftAddress)).mint(recipient, tokenURI);
     }
