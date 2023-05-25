@@ -13,6 +13,7 @@ import { abridgeAddress } from "@utils/abridgeAddress";
 import { users } from "@data/users";
 import Error404 from "@components/404";
 import { useAccount } from "wagmi";
+import withTransition from "@components/withTransition";
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === "prod"
@@ -126,4 +127,4 @@ function Community() {
   );
 }
 
-export default Community;
+export default withTransition(Community);

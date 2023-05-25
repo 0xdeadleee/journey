@@ -1,5 +1,6 @@
 import { VStack, Text, Image, Box } from "@chakra-ui/react";
 import styles from "@styles/Quest.module.css";
+import withTransition from "./withTransition";
 
 function Error404() {
   return (
@@ -17,4 +18,4 @@ function Error404() {
   );
 }
 
-export default Error404;
+export default withTransition(Error404);

@@ -23,6 +23,7 @@ import {
   toastVerifySuccess,
 } from "@utils/toast";
 import { useAccount } from "wagmi";
+import withTransition from "@components/withTransition";
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === "prod"
@@ -502,4 +503,4 @@ function RewardStep({
   );
 }
 
-export default Quest;
+export default withTransition(Quest);

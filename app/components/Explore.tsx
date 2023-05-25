@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import QuestCard from "./QuestCard";
 import { useEffect, useState } from "react";
 import { mockQuests } from "@data/static";
+import withTransition from "./withTransition";
 
 const JOURNEY_API_URL =
   process.env.NEXT_PUBLIC_ENV === "prod"
@@ -64,4 +65,4 @@ function Explore() {
   );
 }
 
-export default Explore;
+export default withTransition(Explore);

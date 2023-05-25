@@ -2,6 +2,7 @@ import { Button, VStack, Image, Box, Text, Spinner } from "@chakra-ui/react";
 import styles from "@styles/Home.module.css";
 import { useConnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import withTransition from "./withTransition";
 
 function Landing() {
   const { connect, isLoading } = useConnect({
@@ -30,4 +31,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default withTransition(Landing);

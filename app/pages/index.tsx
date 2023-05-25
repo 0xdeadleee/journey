@@ -5,6 +5,7 @@ import { VStack, Text } from "@chakra-ui/react";
 import { useAccount } from "wagmi";
 import Explore from "@components/Explore";
 import { onboardUser } from "@utils/web3";
+import withTransition from "@components/withTransition";
 
 function Home() {
   const [width, setWidth] = useState<number>(window.innerWidth);
@@ -49,4 +50,4 @@ function Home() {
   return !isConnected ? <Landing /> : <Explore />;
 }
 
-export default Home;
+export default withTransition(Home);
