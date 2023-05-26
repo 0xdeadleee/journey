@@ -14,8 +14,8 @@ dotenv.config();
 
 export const claimRouter = express.Router();
 
-const JOURNEY_REWARDER_ADDRESS = "0x39925222C45466767F047d6e1A86d733f48D5B4D";
-const JOURNEY_NFT_ADDRESS = "0xC40b8804CEbD92EE3eB39AC197CeCE53C537a8a1";
+const JOURNEY_REWARDER_ADDRESS = "0x909382b210550675d4017A79Fabb6da0Dd8b1E24";
+const JOURNEY_NFT_ADDRESS = "0xB1C00124d9C400B0eFCb4E09d6ff661b98A36322";
 
 const provider = new ethers.providers.JsonRpcProvider(
   "https://rpc.chiadochain.net"
