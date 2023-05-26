@@ -1,9 +1,9 @@
 # Journey
 
-Journey is a Gnosis Chain quests platform built to onboard the next billion users into crypto through the Gnosis Chain. This project was built for the Scaling Ethereum 2023 Gnosis Chain Bounty.
+Journey is a Gnosis Chain quests platform built to onboard the next billion users into crypto through the Gnosis Chain. This project was built for the Encode Club Gnosis Chain Hackathon 2023.
 
 - Check out the [Live Deployment](https://tryjourney.net)
-- Check out the [Walkthrough Demo](https://ethglobal.com/showcase/journey-34h5a)
+- Check out the [Walkthrough Demo](https://vimeo.com/831097337?share=copy)
 
 ![](app/public/landing.png)
 
